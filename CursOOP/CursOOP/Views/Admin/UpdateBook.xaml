@@ -1,0 +1,95 @@
+<Page x:Class="CursOOP.Views.Admin.UpdateBook"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CursOOP.Views.Admin"
+      mc:Ignorable="d"
+      xmlns:admin="clr-namespace:CursOOP.ViewModels.Admin"
+      Title="UpdateBook" Background="{DynamicResource PanelMain}" Height="800" Width="900">
+    <Page.DataContext>
+        <admin:UpdateBookViewModel></admin:UpdateBookViewModel>
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.ColumnSpan="2" Style="{StaticResource BigLabelStyle}" Margin="10,0,0,0" Content="{DynamicResource AddBook}"></Label>
+        
+        <StackPanel Grid.Row="1">
+        
+            
+            <Label Style="{StaticResource SecondaryLabelStyle}" Margin="15,0,0,0" Content="{DynamicResource NameBook}"></Label>
+            <TextBox Style="{StaticResource TextBoxAvg}" HorizontalAlignment="Left" Width="200" Margin="15,0,0,0" x:Name="NameBook" Text="{Binding Name}"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="{DynamicResource Author}" Style="{StaticResource SecondaryLabelStyle}" Margin="15,0,0,0" ></Label>
+                    <TextBox Style="{StaticResource TextBoxAvg}" HorizontalAlignment="Left" Width="200" Margin="15,0,0,0" x:Name="AuthorBook" Text="{Binding Author}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <Label Content="{DynamicResource YearUp}" Style="{StaticResource SecondaryLabelStyle}" Margin="40,0,0,0" ></Label>
+                    <TextBox Style="{StaticResource TextBoxAvg}" Width="100" Margin="45,0,0,0" x:Name="YearBook" Text="{Binding Year}"/>
+                </StackPanel>
+            </StackPanel>
+            <Label Style="{StaticResource SecondaryLabelStyle}" Margin="15,0,0,0" Content="{DynamicResource ShortDesc}"></Label>
+            <TextBox Style="{StaticResource TextBoxAvg}" TextWrapping="Wrap" HorizontalAlignment="Left" Height="60" Width="350" Margin="15,0,0,0" x:Name="ShortDescBook" Text="{Binding Shortdesc}"/>
+            
+            <Label Content="{DynamicResource FullDesc}" Style="{StaticResource SecondaryLabelStyle}" Margin="15,0,0,0"></Label>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <TextBox Background="#80FFFFFF" Style="{StaticResource TextBoxAvg}" TextWrapping="Wrap"  HorizontalAlignment="Left" Height="70" Width="350" Margin="15,0,0,0" x:Name="FullDescBook" Text="{Binding Fulldesc}"/>
+            </ScrollViewer>
+            
+           
+            <Label Style="{StaticResource SecondaryLabelStyle}" Margin="15,10,0,5" Content="{DynamicResource Status}"></Label>
+            <ComboBox Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" HorizontalAlignment="Left" Margin="15,0,0,0" Width="350" x:Name="DropDownList" SelectedValue="{Binding SelectedItem}" SelectedValuePath="Content">
+                <ComboBoxItem Content="Завершён" />
+                <ComboBoxItem Content="Онгоинг" />
+                <ComboBoxItem Content="Заброшен" />
+            </ComboBox>
+            
+            
+            
+           
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Label Style="{StaticResource SecondaryLabelStyle}" HorizontalAlignment="Center" >Изображение:</Label>
+                <Border BorderBrush="Black" BorderThickness="1" Width="170" Height="260">
+                    <Border.Background>
+                        <ImageBrush  x:Name="ImgBook" ImageSource="{Binding Img, Converter={StaticResource ByteArrToImg}}"/>
+                    </Border.Background>
+                </Border>
+            <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Height="20" Width="140" Margin="0,5,0,0" Style="{StaticResource GrayButtonStyle}" Content="{DynamicResource UpImg}" HorizontalAlignment="Center"  Command="{Binding ImgCommand}" ></Button>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Border BorderBrush="Black" BorderThickness="1" Width="500" Height="260" VerticalAlignment="Top" Margin="0,50,0,0">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding Imgback, Converter={StaticResource ByteArrToImg}}" />
+                    </Border.Background>
+                </Border>
+                <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Margin="0,5,0,0" Padding="3" Style="{StaticResource GrayButtonStyle}" Content="{DynamicResource UpImg}" Height="20" Width="140" HorizontalAlignment="Center"  Command="{Binding ImgBackCommand}" ></Button>
+                
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Height="30" Width="100" Style="{StaticResource GrayButtonStyle}" Margin="0,40,50,0"  Command="{Binding UndoCommand}" Content="{DynamicResource Can}"></Button>
+                <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Height="30" Width="100" Style="{StaticResource LoginButtonStyle}" Margin="50,40,0,0"  Command="{Binding AddCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:AddBook}}, Path=GenresCheckAdd}" Content="{DynamicResource Add}"></Button>
+            </StackPanel>
+           
+        </Grid>
+        
+    </Grid>
+</Page>

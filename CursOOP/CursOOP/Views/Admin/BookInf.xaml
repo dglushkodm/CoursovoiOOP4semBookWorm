@@ -1,0 +1,268 @@
+<Page x:Class="CursOOP.Views.Admin.BookInf"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      xmlns:local="clr-namespace:CursOOP.Views.Admin"
+      xmlns:admin="clr-namespace:CursOOP.ViewModels.Admin"
+      mc:Ignorable="d"
+      Title="BookInf" Background="{DynamicResource BackgroundMain}" d:DesignHeight="1080" d:DesignWidth="1920">
+    <Page.DataContext>
+        <admin:BookInfViewModel></admin:BookInfViewModel>
+    </Page.DataContext>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Frame HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" x:Name="HeaderFrame"></Frame>
+        
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="{Binding Imgback}"  Stretch="UniformToFill" />
+            </Rectangle.Fill>
+            <Rectangle.OpacityMask>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                    <GradientStop Offset="0" Color="Transparent" />
+                    <GradientStop Offset="0.7" Color="White" />
+                </LinearGradientBrush>
+            </Rectangle.OpacityMask>
+        </Rectangle>
+       
+        <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="4" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+                <StackPanel>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Border Width="220" Height="340"  HorizontalAlignment="Right" VerticalAlignment="Top" Margin="50,0,0,0">
+                            <Border.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Img}"></ImageBrush>
+                            </Border.Background>
+                        </Border>
+                        <Border Grid.Row="1" CornerRadius="8" Background="{DynamicResource ResourceKey=PanelMain}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="220" Margin="0,30,0,0">
+                            <StackPanel>
+                                <Label Content="{DynamicResource Author}" Style="{StaticResource SecondaryLabelStyleGray}"/>
+                                <Label Content="{Binding Author}"  Style="{StaticResource SecondaryLabelStyle}"/>
+                                <Label Content="{DynamicResource YearUp}" Style="{StaticResource SecondaryLabelStyleGray}"/>
+                                <Label Content="{Binding Year}"  Style="{StaticResource SecondaryLabelStyle}"/>
+                                <Label Content="{DynamicResource Status}" Style="{StaticResource SecondaryLabelStyleGray}"/>
+                                <Label Content="{Binding Status}"  Style="{StaticResource SecondaryLabelStyle}"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            
+            <Grid  Grid.Column="1" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Name}"  Margin="50,0,0,0" FontSize="40" Style="{StaticResource SecondaryLabelStyle}" VerticalAlignment="Top"></Label>
+                <StackPanel Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,250,0">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <Label Content="{Binding Rate, StringFormat={}{0:F2}}" FontSize="40" Style="{StaticResource SecondaryLabelStyle}"  VerticalAlignment="Top"   HorizontalContentAlignment="Left"></Label>
+                        <Image  Source="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\star_Yellow.png"  Width="30"  HorizontalAlignment="Left"></Image>
+                    </StackPanel>
+                    <Button  Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Content="{DynamicResource Rate}" Height="30" Width="130"  Style="{StaticResource LoginButtonStyle}" Command="{Binding RatingCommand}"></Button>
+                </StackPanel>
+               
+                <Grid  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="50,0,250,0">
+                    <ScrollViewer  VerticalScrollBarVisibility="Hidden"
+                                   HorizontalScrollBarVisibility="Disabled"
+                                   PanningMode="VerticalOnly">
+                    <Border  CornerRadius="8" Background="{DynamicResource ResourceKey=PanelMain}">
+                        
+                        <TabControl Background="Transparent" BorderThickness="0" Margin="0,2,0,0">
+                            <TabControl.Resources>
+                                <Style TargetType="TabItem">
+                                    <Setter Property="FontSize" Value="18"></Setter>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="TabItem">
+                                                <Grid Background="Transparent">
+                                                    <ContentPresenter x:Name="ContentSite"
+                                                                      VerticalAlignment="Center"
+                                                                      HorizontalAlignment="Center"
+                                                                      ContentSource="Header"
+                                                                      Margin="50,10,0,10"/>
+                                                </Grid>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="Gray" />
+                                                        <Setter TargetName="ContentSite" Property="TextElement.FontSize" Value="19" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="False">
+                                                        <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="Azure" />
+                                                        <Setter TargetName="ContentSite" Property="TextElement.FontSize" Value="19" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TabControl.Resources>
+                           
+                            <TabItem Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" x:Name="Inf" Foreground="Azure" FontSize="15" Header="{DynamicResource Inf}" >
+                        <Grid>
+                           <Grid.RowDefinitions>
+                               <RowDefinition Height="Auto"/>
+                               <RowDefinition Height="Auto"/>
+                               <RowDefinition Height="*"/>
+                               <RowDefinition Height="*"/>
+                           </Grid.RowDefinitions>
+                            <Rectangle Grid.Row="0" Height="1" Fill="Azure"/>
+                           <StackPanel Grid.Row="1">
+                            <Label Margin="50,0,50,0" FontSize="20"  Content="{DynamicResource Desc}" Style="{StaticResource SecondaryLabelStyle}"></Label>
+                            <TextBlock Margin="50,0,50,50" FontSize="12" Text="{Binding Fulldesc}" Style="{StaticResource SecondaryTExtBlockStyleGray}" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="2">
+                                <Label Margin="50,0,50,0" Content="{DynamicResource Rew}" FontSize="20" Style="{StaticResource SecondaryLabelStyle}"></Label>
+                                
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.ColumnSpan="2" Height="80" Style="{StaticResource Review}" Text="{Binding Review}" Margin="50,0,20,0"></TextBox>
+                                    <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Content="{DynamicResource Upload}"  FontWeight="Bold" FontSize="13" Style="{StaticResource OkButtonStyle}" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="50,15,150,15" Command="{Binding AddCommentCommand}"/>
+                                </Grid>
+                               
+                                <ListView Margin="50,10,140,0" ItemsSource="{Binding Reviews}" Background="Transparent" BorderThickness="0">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Border Style="{StaticResource SmallCircularImageBorder}">
+                                                    <Border.Background>
+                                                        <ImageBrush ImageSource="{Binding ProfileImage}" Stretch="UniformToFill" x:Name="LangBut"/>
+                                                    </Border.Background>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Label Style="{StaticResource SecondaryLabelStyle}" FontWeight="Bold" Content="{Binding UserName}"></Label>
+                                                    <Label Style="{StaticResource SecondaryLabelStyleGray}" Content="{Binding ReviewText}"></Label>
+                                                </StackPanel>
+                                                <Button Grid.Column="0" HorizontalAlignment="Left" Command="{Binding DataContext.DeleteReview, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                                        CommandParameter="{Binding}" BorderThickness="0" Background="Transparent" Margin="400,0,0,0">
+                                                    <Button.Template>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <Image Source="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\delete.png" Grid.Column="1"  Width="20" Height="20"  x:Name="LangBut"/>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                       </Grid>
+                        </TabItem>
+                            <TabItem Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" x:Name="Chap" Foreground="Azure" FontSize="15" Header="{DynamicResource Chapts}" Margin="0,0,0,0">
+                        <Grid>
+                           <Grid.RowDefinitions>
+                               <RowDefinition Height="Auto"/>
+                               <RowDefinition Height="Auto"/>
+                               <RowDefinition Height="Auto"/>
+                               <RowDefinition Height="*"/>
+                           </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.Row="0" Height="1" Fill="Azure"/>
+                            <Grid Grid.Row="1">
+                                <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" Margin="50,3" Height="30" x:Name="AddBook" Command="{Binding AddCommand}" >
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Image Source="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\plus_gray.png" Width="30" Height="30"></Image>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Grid>
+                            <Rectangle Grid.Row="2" Height="1" Fill="Azure"/>
+                                <ListView Grid.Row="3" Grid.Column="0" Margin="50,10,50,0" ItemsSource="{Binding Chapters}" Background="Transparent" BorderThickness="0">
+                                    
+                                    <ListView.ItemContainerStyle >
+                                        
+                                        <Style TargetType="ListViewItem">
+                                            
+                                            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                                            <Setter Property="Margin" Value="0,5"></Setter>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListViewItem" >
+                                                        <Button Background="Transparent"
+                                                                Command="{Binding DataContext.ReadCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                                                CommandParameter="{Binding}"
+                                                                HorizontalContentAlignment="Stretch"
+                                                                VerticalContentAlignment="Stretch"
+                                                                Style="{StaticResource ChapterButtonStyle}"
+                                                                >
+                                                            
+                                                            <Button.Content>
+                                                                
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Grid>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Label Grid.Column="0" Content="Том " Style="{StaticResource SecondaryLabelStyleGray}" HorizontalAlignment="Left"></Label>
+                                                                            <Label Grid.Column="1" Content="{Binding Volume}" Style="{StaticResource SecondaryLabelStyleGray}" HorizontalAlignment="Left"></Label>
+                                                                            <Label Grid.Column="2" Content="Глава " Style="{StaticResource SecondaryLabelStyleGray}" HorizontalAlignment="Left"></Label>
+                                                                            <Label Grid.Column="3" Content="{Binding Number}" Style="{StaticResource SecondaryLabelStyleGray}" HorizontalAlignment="Left"></Label>
+                                                                        
+                                                                        <Label Grid.Column="5" Content="{Binding DateUpload}" Style="{StaticResource SecondaryLabelStyleGray}" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" Margin="450,0,0,0"></Label>
+                                                                        </Grid>
+                                                                    </StackPanel>
+                                                                
+                                                            </Button.Content>
+                                                        </Button>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                           
+                        </Grid>
+                        </TabItem>
+                            </TabControl>
+                            
+                    </Border>
+                        
+                    </ScrollViewer>
+                    
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>

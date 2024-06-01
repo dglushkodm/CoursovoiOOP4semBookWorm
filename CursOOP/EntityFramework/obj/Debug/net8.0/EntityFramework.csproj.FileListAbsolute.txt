@@ -1,0 +1,14 @@
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\bin\Debug\net8.0\EntityFramework.deps.json
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\bin\Debug\net8.0\EntityFramework.runtimeconfig.json
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\bin\Debug\net8.0\EntityFramework.dll
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\bin\Debug\net8.0\EntityFramework.pdb
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\EntityFramework.csproj.AssemblyReference.cache
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\EntityFramework.GeneratedMSBuildEditorConfig.editorconfig
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\EntityFramework.AssemblyInfoInputs.cache
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\EntityFramework.AssemblyInfo.cs
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\EntityFramework.csproj.CoreCompileInputs.cache
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\EntityFramework.dll
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\refint\EntityFramework.dll
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\EntityFramework.pdb
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\EntityFramework.genruntimeconfig.cache
+D:\БГТУ\CursachOOP\CursOOP\EntityFramework\obj\Debug\net8.0\ref\EntityFramework.dll

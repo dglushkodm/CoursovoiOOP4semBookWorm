@@ -1,0 +1,49 @@
+<Page x:Class="CursOOP.Views.Registration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CursOOP.Views"
+      xmlns:viewModels="clr-namespace:CursOOP.ViewModels"
+      mc:Ignorable="d"
+      Title="Registration" Height="500" Width="500" Background="Transparent">
+    <Page.DataContext>
+        <viewModels:RegistrationViewModel></viewModels:RegistrationViewModel>
+    </Page.DataContext>
+    <Grid>
+        
+        <Grid Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel>
+                <Label FontSize="25" Foreground="Azure" Margin="0,0,0, 10" HorizontalAlignment="Center" Content="{DynamicResource Regist}"></Label>
+                <Border CornerRadius="15" Width="500" Height="420" Background="{DynamicResource PanelMain}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20,15,0,0">
+                            <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Margin="10,0,0,0" Command="{Binding LoginRedirectCommand}" VerticalAlignment="Center" Style="{StaticResource TransparentButtonStyle}" Foreground="Azure" Content="{DynamicResource Enter}"></Button>
+                            <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Margin="15,0,0,0" Command="{Binding RegistrationRedirectCommand}" VerticalAlignment="Center" Style="{StaticResource TransparentButtonStyle}" Foreground="Gray" Content="{DynamicResource Regist}"></Button>
+                        </StackPanel>
+                        <Rectangle Grid.Row="1" Width="440" Height="1" Fill="Azure"/>
+                        <StackPanel Grid.Row="2" VerticalAlignment="Top">
+                            <Label Height="30" Margin="0,15,0,0" Style="{StaticResource SecondaryLabelStyle}" HorizontalAlignment="Center" Content="{DynamicResource RegText}"></Label>
+                            <Label  FontSize="12" Height="30" Margin="25,10,0,0" Style="{StaticResource SecondaryLabelStyle}" HorizontalAlignment="Left" Content="{DynamicResource Nick}"></Label>
+                            <TextBox VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="Azure" Height="25" Text="{Binding Username}" BorderThickness="0" BorderBrush="Azure" Background="#10FFFFFF" Margin="0,0,0,0" Width="440"></TextBox>
+                            <Label FontSize="12" Height="30" Margin="25,10,0,0" Style="{StaticResource SecondaryLabelStyle}" HorizontalAlignment="Left" Content="{DynamicResource Email}"></Label>
+                            <TextBox VerticalContentAlignment="Center" Padding="5,0,0,0" Foreground="Azure" Height="25" Text="{Binding Email}" BorderThickness="0" BorderBrush="Azure" Background="#10FFFFFF" Margin="0,0,0,0" Width="440"></TextBox>
+                            <Label  FontSize="12" Height="30" Margin="25,10,0,0" Style="{StaticResource SecondaryLabelStyle}" HorizontalAlignment="Left" Content="{DynamicResource Pasw}"></Label>
+                            <PasswordBox VerticalContentAlignment="Center" Padding="5,0,0,0" Height="25" Foreground="Azure" PasswordChar="●" PasswordChanged="PasswordBox_PasswordChanged" BorderThickness="0" BorderBrush="Azure" Background="#10FFFFFF" Margin="0,0,0,0" Width="440"></PasswordBox>
+                            <Rectangle Margin="0,35,0,0" Width="440" Height="1" Fill="Azure"/>
+                            <Label Style="{StaticResource SecondaryLabelStyle}" Content="{Binding Message}" Width="400" Height="30" Foreground="Brown" FontSize="11" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Command="{Binding EnterRedirectCommand}" Style="{DynamicResource LoginButtonStyle }" Margin="0,20,0,0" Width="150" Height="30" Content="{DynamicResource Reg}"></Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Grid>
+        
+    
+    </Grid>
+</Page>

@@ -1,0 +1,81 @@
+<UserControl x:Class="CursOOP.Views.User.BookCardUser"
+             x:Name="UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:CursOOP.Views.User"
+             xmlns:viewmodels="clr-namespace:CursOOP.ViewModels.User"
+             mc:Ignorable="d"
+             Height="210" Width="130">
+    <UserControl.Resources>
+        
+        <Style TargetType="local:BookCardUser">
+            <Setter Property="Margin" Value="20"></Setter>
+            <Style.Resources>
+                <Style TargetType="TextBlock" x:Key="Shadow">
+                    <Setter Property="Background" Value="black"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                </Style>
+                <Style x:Key="Name" TargetType="TextBlock" >
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="10"/>
+                </Style>
+                
+            </Style.Resources>
+        </Style>
+    </UserControl.Resources>
+            <Grid x:Name="myGrid" MouseLeftButtonDown="BookPanel_OnMouseLeftButtonDown" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation To="140" Duration="0:0:0.3" Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Width" />
+                                    <DoubleAnimation To="220" Duration="0:0:0.3" Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Height" />
+                                    <DoubleAnimation To="1" Duration="0:0:0.3" Storyboard.TargetName="button1" Storyboard.TargetProperty="Opacity" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation To="130" Duration="0:0:0.3" Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Width" />
+                                    <DoubleAnimation To="210" Duration="0:0:0.3" Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Height" />
+                                    <DoubleAnimation To="0" Duration="0:0:0.3" Storyboard.TargetName="button1" Storyboard.TargetProperty="Opacity" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
+                
+                    <Border Grid.RowSpan="3" CornerRadius="10">
+                        <Border.Background>
+                            <ImageBrush  Stretch="UniformToFill" ImageSource="{Binding Img, Converter={StaticResource ByteArrToImg}}"/>
+                        </Border.Background>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid  Grid.Row="2">
+                                <Border Background="Black" VerticalAlignment="Bottom" Opacity="0.70" CornerRadius="0,0,10,10" >
+                                    <TextBlock TextWrapping="Wrap"  x:Name="NameTextBlock" Foreground="White" Opacity="1" FontSize="10" Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,15"/>
+                                </Border>
+                            </Grid>
+                            <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur"  x:Name="button1" VerticalAlignment="top"  HorizontalAlignment="Right" Opacity="0" Height="20" Margin="0,5"  Click="Like_Click">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image  x:Name="button1"  Source="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\like.png"></Image>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+                    </Border>
+               
+            </Grid>
+</UserControl>

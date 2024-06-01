@@ -1,0 +1,97 @@
+<Page x:Class="CursOOP.Views.User.AccountUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      xmlns:local="clr-namespace:CursOOP.Views.User"
+      xmlns:localvm="clr-namespace:CursOOP.ViewModels.User"
+      xmlns:admin="clr-namespace:CursOOP.Views.Admin"
+      mc:Ignorable="d"
+      Title="AccountUser"  d:DesignHeight="1080" d:DesignWidth="1920"  Background="Black">
+    <Page.DataContext>
+        <localvm:AccountUserViewModel></localvm:AccountUserViewModel>
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Frame HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" x:Name="HeaderFrame"></Frame>
+        <Button Grid.Row="1" Grid.ColumnSpan="2"  Style="{StaticResource NoHoverButtonStyle}" HorizontalAlignment="Center" BorderThickness="0" Margin="0,20,0,0" Background="Transparent">
+                       
+            <Border Style="{StaticResource BigCircularImageBorder}">
+                <Border.Background>
+                    <ImageBrush ImageSource="{Binding Img}" Stretch="UniformToFill" x:Name="LangBut"/>
+                </Border.Background>
+            </Border>
+        </Button>
+        <Button Cursor="D:\БГТУ\CursachOOP\CursOOP\CursOOP\Resources\Images\Link.cur" Grid.Row="2" Grid.ColumnSpan="2" Background="Transparent" Height="20" Width="30" Margin="150,0,0,0" BorderBrush="Transparent" Command="{Binding ImgCommand}">
+            <Button.Content>
+                <fa:IconBlock   Icon="Edit" Foreground="LightGray"  ></fa:IconBlock>
+            </Button.Content>
+        </Button>
+        <Border Margin="200,0" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="4" CornerRadius="8" Background="{DynamicResource PanelMain}">
+                 
+                        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Content="{DynamicResource InfUser}" Margin="50,30,0,0" FontSize="20" Style="{StaticResource SecondaryLabelStyle}" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+                            <Rectangle Grid.Row="1" Width="1400" Height="1" Fill="Azure"/>
+                            <TextBlock Grid.Row="2" Margin="50,20,0,0" FontSize="20" Style="{StaticResource SecondaryTExtBlockStyleGray}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <TextBlock.Text >
+                        <MultiBinding StringFormat="Никнейм: {0}">
+                            <Binding Path="Name" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                            <TextBlock Grid.Row="3"  Margin="50,20,0,0" FontSize="20" Style="{StaticResource SecondaryTExtBlockStyleGray}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <TextBlock.Text >
+                                    <MultiBinding StringFormat="Почта: {0}">
+                                        <Binding Path="Email" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            
+                            <Label Grid.Row="4" Content="{DynamicResource Coll}" Margin="50,30,0,0" FontSize="20" Style="{StaticResource SecondaryLabelStyle}" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+                            <Rectangle Grid.Row="5" Width="1400" Height="1" Fill="Azure"/>
+            <Grid Grid.Row="6">
+            <ItemsControl Margin="50" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="BooksItemsControl"
+                          ItemsSource="{Binding LikedBooksInit}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel x:Name="WrapPanelCatalog" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:BookCardUser DataContext="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+        </Grid>
+                 
+                </Border>
+    </Grid>
+</Page>
